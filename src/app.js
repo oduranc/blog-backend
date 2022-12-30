@@ -22,7 +22,7 @@ app.listen(PORT, () => {
 	console.log('Running on port ' + PORT);
 });
 
-app.get('/', (req, res) => res.send('Hi.'));
+app.get('/', (req, res) => res.send('Tu real api manito.'));
 
 // MongoDB Connection
 mongoose
