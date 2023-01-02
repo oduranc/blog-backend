@@ -6,8 +6,8 @@ const userSchema = require('../models/user');
 const getAllComments = (req, res) => {
 	commentSchema
 		.find()
-		.then((data) => res.json(data))
-		.catch((error) => res.json({ message: error }));
+		.then((data) => res.status(200).json(data))
+		.catch((error) => res.status(500).json({ message: error }));
 };
 
 const getCommentsByArticle = (req, res) => {
@@ -15,16 +15,16 @@ const getCommentsByArticle = (req, res) => {
 		.find()
 		.where('article')
 		.equals(req.params.article)
-		.then((data) => res.json(data))
-		.catch((error) => res.json({ message: error }));
+		.then((data) => res.status(200).json(data))
+		.catch((error) => res.status(500).json({ message: error }));
 };
 
 const getCommentById = (req, res) => {
 	const { id } = req.params;
 	commentSchema
 		.findById(id)
-		.then((data) => res.json(data))
-		.catch((error) => res.json({ message: error }));
+		.then((data) => res.status(200).json(data))
+		.catch((error) => res.status(500).json({ message: error }));
 };
 
 const createComment = (req, res) => {
@@ -40,10 +40,10 @@ const createComment = (req, res) => {
 		comment.body = req.body.body;
 		comment
 			.save()
-			.then((data) => res.json(data))
-			.catch((error) => res.json({ message: error }));
+			.then((data) => res.status(200).json(data))
+			.catch((error) => res.status(500).json({ message: error }));
 	} else {
-		res.json({ message: 'Artículo o usuario no existe' });
+		res.status(500).json({ message: 'Artículo o usuario no existe' });
 	}
 };
 
@@ -53,8 +53,8 @@ const editCommentById = (req, res) => {
 
 	commentSchema
 		.updateOne({ _id: id }, { $set: updates })
-		.then((data) => res.json(data))
-		.catch((error) => res.json({ message: error }));
+		.then((data) => res.status(200).json(data))
+		.catch((error) => res.status(500).json({ message: error }));
 };
 
 const deleteCommentById = (req, res) => {
@@ -62,8 +62,8 @@ const deleteCommentById = (req, res) => {
 
 	commentSchema
 		.deleteOne({ _id: id })
-		.then((data) => res.json(data))
-		.catch((error) => res.json({ message: error }));
+		.then((data) => res.status(200).json(data))
+		.catch((error) => res.status(500).json({ message: error }));
 };
 
 module.exports = {

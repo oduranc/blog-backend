@@ -9,16 +9,16 @@ const saltRounds = 10;
 const getAllUsers = (req, res) => {
 	userSchema
 		.find()
-		.then((data) => res.json(data))
-		.catch((error) => res.json({ message: error }));
+		.then((data) => res.status(200).json(data))
+		.catch((error) => res.status(500).json({ message: error }));
 };
 
 const getUserById = (req, res) => {
 	const { id } = req.params;
 	userSchema
 		.findById(id)
-		.then((data) => res.json(data))
-		.catch((error) => res.json({ message: error }));
+		.then((data) => res.status(200).json(data))
+		.catch((error) => res.status(500).json({ message: error }));
 };
 
 const createUser = async (req, res) => {
@@ -29,13 +29,13 @@ const createUser = async (req, res) => {
 	user
 		.save()
 		.then(() => loginUser(req, res))
-		.catch((error) => res.json({ message: error }));
+		.catch((error) => res.status(500).json({ message: error }));
 };
 
 const loginUser = async (req, res) => {
 	try {
-		const { username, password } = req.body;
-		const user = await userSchema.findOne({ username: username });
+		const { email, password } = req.body;
+		const user = await userSchema.findOne({ email: email });
 		!user;
 		if (await bcrypt.compare(password, user.password)) {
 			const accessToken = jwt.sign(
@@ -45,7 +45,7 @@ const loginUser = async (req, res) => {
 				process.env.JWT_SECRET,
 				{ expiresIn: '3d' }
 			);
-			res.status(200).json({ username, accessToken });
+			res.status(200).json({ email, accessToken });
 		} else {
 			res.status(500).json({
 				message: 'Usuario o contraseña incorrecta',
@@ -62,8 +62,8 @@ const editUserById = (req, res) => {
 
 	userSchema
 		.updateOne({ _id: id }, { $set: updates })
-		.then((data) => res.json(data))
-		.catch((error) => res.json({ message: error }));
+		.then((data) => res.status(200).json(data))
+		.catch((error) => res.status(500).json({ message: error }));
 };
 
 const deleteUserById = (req, res) => {
@@ -71,8 +71,8 @@ const deleteUserById = (req, res) => {
 
 	userSchema
 		.deleteOne({ _id: id })
-		.then((data) => res.json(data))
-		.catch((error) => res.json({ message: error }));
+		.then((data) => res.status(200).json(data))
+		.catch((error) => res.status(500).json({ message: error }));
 };
 
 module.exports = {

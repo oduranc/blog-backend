@@ -3,24 +3,24 @@ const articleSchema = require('../models/article');
 const getAllArticles = (req, res) => {
 	articleSchema
 		.find()
-		.then((data) => res.json(data))
-		.catch((error) => res.json({ message: error }));
+		.then((data) => res.status(200).json(data))
+		.catch((error) => res.status(500).json({ message: error }));
 };
 
 const getArticlesByCategory = (req, res) => {
 	const { category } = req.params;
 	articleSchema
 		.find({ category: category })
-		.then((data) => res.json(data))
-		.catch((error) => res.json({ message: error }));
+		.then((data) => res.status(200).json(data))
+		.catch((error) => res.status(500).json({ message: error }));
 };
 
 const getArticleById = (req, res) => {
 	const { id } = req.params;
 	articleSchema
 		.findById(id)
-		.then((data) => res.json(data))
-		.catch((error) => res.json({ message: error }));
+		.then((data) => res.status(200).json(data))
+		.catch((error) => res.status(500).json({ message: error }));
 };
 
 const createArticle = (req, res) => {
@@ -34,8 +34,8 @@ const createArticle = (req, res) => {
 	article.cover = req.file.path;
 	article
 		.save()
-		.then((data) => res.json(data))
-		.catch((error) => res.json({ message: error }));
+		.then((data) => res.status(200).json(data))
+		.catch((error) => res.status(500).json({ message: error }));
 };
 
 const editArticleById = (req, res) => {
@@ -44,8 +44,8 @@ const editArticleById = (req, res) => {
 
 	articleSchema
 		.updateOne({ _id: id }, { $set: updates })
-		.then((data) => res.json(data))
-		.catch((error) => res.json({ message: error }));
+		.then((data) => res.status(200).json(data))
+		.catch((error) => res.status(500).json({ message: error }));
 };
 
 const deleteArticleById = (req, res) => {
@@ -53,8 +53,8 @@ const deleteArticleById = (req, res) => {
 
 	articleSchema
 		.deleteOne({ _id: id })
-		.then((data) => res.json(data))
-		.catch((error) => res.json({ message: error }));
+		.then((data) => res.status(200).json(data))
+		.catch((error) => res.status(500).json({ message: error }));
 };
 
 module.exports = {

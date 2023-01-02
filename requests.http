@@ -18,12 +18,12 @@ Content-Type: application/json
 }
 
 ### LOGIN USER
-POST https://economic-blog-backend.up.railway.app/api/users/login HTTP/1.1
+POST http://localhost:8080/api/users/login HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "probando2222",
-    "password": "contraseña"
+    "email": "bujosa2023@gmail.com",
+    "password": "Bujosa20232"
 }
 
 ## ARTICLES
