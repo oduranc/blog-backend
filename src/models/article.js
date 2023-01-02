@@ -9,23 +9,15 @@ const articleSchema = mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	subcategories: {
-		type: [String],
-		required: true,
-	},
 	description: {
 		type: String,
 		required: true,
 	},
-	authorName: {
-		type: String,
+	postedBy: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'User',
 		required: true,
 	},
-	// postedBy: {
-	//   type: mongoose.Schema.Types.ObjectId,
-	//   ref: "User",
-	//   required: true,
-	// },
 	created: {
 		type: Date,
 		default: Date.now,

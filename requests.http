@@ -12,9 +12,9 @@ POST http://localhost:8080/api/users/signup HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "odurance",
-    "email": "correo@emaail.com",
-    "password": "contraseñasegura"
+    "username": "probando2222",
+    "email": "probando2222@email.com",
+    "password": "contraseña"
 }
 
 ### LOGIN USER
@@ -22,8 +22,8 @@ POST http://localhost:8080/api/users/login HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "oduranc",
-    "password": "contraseñasegura"
+    "username": "probando2222",
+    "password": "contraseña"
 }
 
 ## ARTICLES
@@ -56,9 +56,20 @@ Content-Type: application/json
 }
 
 ### DELETE ONE ARTICLE BY ID
-DELETE http://localhost:8080/api/articles/1 HTTPS/1.1
+DELETE http://localhost:8080/api/articles/1 HTTP/1.1
 Content-Type: application/json
 
 {
     "": ,
+}
+
+## USERS
+### CREATE ONE COMMENT
+POST http://localhost:8080/api/comments HTTP/1.1
+Content-Type: application/json
+
+{
+    "article": "63ae70d69b0d644655b8703f",
+    "user": "63ae831e6c89f24f17b5a674", 
+    "body": "Probando"
 }

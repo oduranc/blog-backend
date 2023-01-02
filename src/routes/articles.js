@@ -5,7 +5,6 @@ const {
 	getArticleById,
 	createArticle,
 	editArticleById,
-	commentArticle,
 	deleteArticleById,
 } = require('../controllers/articles');
 const upload = require('../controllers/images');
