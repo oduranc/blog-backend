@@ -45,7 +45,8 @@ const loginUser = async (req, res) => {
 				process.env.JWT_SECRET,
 				{ expiresIn: '3d' }
 			);
-			res.status(200).json({ email, accessToken });
+			const username = user.username;
+			res.status(200).json({ username, accessToken });
 		} else {
 			res.status(500).json({
 				message: 'Usuario o contraseña incorrecta',
