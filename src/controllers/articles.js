@@ -30,7 +30,7 @@ const createArticle = (req, res) => {
 	article.category = req.body.category;
 	article.description = req.body.description;
 	article.postedBy = req.body.postedBy;
-	article.cover = req.file.path;
+	//article.cover = req.file.path;
 	article
 		.save()
 		.then((data) => res.status(200).json(data))

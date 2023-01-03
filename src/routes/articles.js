@@ -15,7 +15,7 @@ router
 	.get('/', getAllArticles)
 	.get('/category/:category', getArticlesByCategory)
 	.get('/:id', getArticleById)
-	.post('/', upload.single('image'), createArticle)
+	.post('/', /*upload.single('image'),*/ createArticle)
 	.patch('/:id', editArticleById)
 	.delete('/:id', deleteArticleById);
 
