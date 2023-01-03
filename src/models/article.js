@@ -22,10 +22,10 @@ const articleSchema = mongoose.Schema({
 		default: Date.now,
 		required: true,
 	},
-	// cover: {
-	// 	type: String,
-	// 	required: true,
-	// },
+	cover: {
+		type: String,
+		required: true,
+	},
 });
 
 module.exports = mongoose.model('Article', articleSchema);
