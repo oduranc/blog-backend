@@ -14,8 +14,7 @@ const articleSchema = mongoose.Schema({
 		required: true,
 	},
 	postedBy: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'User',
+		type: String,
 		required: true,
 	},
 	created: {

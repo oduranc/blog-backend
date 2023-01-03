@@ -27,10 +27,8 @@ const createArticle = (req, res) => {
 	var article = new articleSchema();
 	article.title = req.body.title;
 	article.category = req.body.category;
-	var subcategories = req.body.subcategories;
-	article.subcategories = subcategories.split(',');
 	article.description = req.body.description;
-	article.authorName = req.body.authorName;
+	article.postedBy = req.body.postedBy;
 	article.cover = req.file.path;
 	article
 		.save()
