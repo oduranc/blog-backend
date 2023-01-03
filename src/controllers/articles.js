@@ -33,7 +33,7 @@ const createArticle = (req, res) => {
 	article
 		.save()
 		.then((data) => res.status(200).json(data))
-		.catch((error) => res.status(500).json({ message: error }));
+		.catch((error) => res.json({ message: error }));
 };
 
 const editArticleById = (req, res) => {
