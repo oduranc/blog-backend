@@ -24,7 +24,6 @@ const getArticleById = (req, res) => {
 };
 
 const createArticle = (req, res) => {
-	console.log(req);
 	var article = new articleSchema();
 	article.title = req.body.title;
 	article.category = req.body.category;

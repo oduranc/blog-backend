@@ -1,7 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const fileUpload = require('express-fileupload');
 const userRouter = require('./routes/users');
 const articleRouter = require('./routes/articles');
 const commentRouter = require('./routes/comments');
@@ -14,7 +13,6 @@ mongoose.set('strictQuery', true);
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-app.use(fileUpload({ createParentPath: true }));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
