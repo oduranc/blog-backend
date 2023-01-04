@@ -31,7 +31,7 @@ const getCommentById = (req, res) => {
 
 const createComment = (req, res) => {
 	var comment = new commentSchema();
-	comment.article = req.boddy.article;
+	comment.article = req.body.article;
 	comment.user = req.body.user;
 	comment.body = req.body.body;
 	comment
