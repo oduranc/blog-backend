@@ -6,6 +6,7 @@ const userSchema = require('../models/user');
 const getAllComments = (req, res) => {
 	commentSchema
 		.find()
+		.sort({ created: -1 })
 		.then((data) => res.status(200).json(data))
 		.catch((error) => res.status(500).json({ message: error }));
 };
@@ -15,6 +16,7 @@ const getCommentsByArticle = (req, res) => {
 		.find()
 		.where('article')
 		.equals(req.params.article)
+		.sort({ created: -1 })
 		.then((data) => res.status(200).json(data))
 		.catch((error) => res.status(500).json({ message: error }));
 };
