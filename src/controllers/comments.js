@@ -31,22 +31,13 @@ const getCommentById = (req, res) => {
 
 const createComment = (req, res) => {
 	var comment = new commentSchema();
-	if (
-		articleSchema.exists({ _id: req.body.article }) &&
-		userSchema.exists({ _id: req.body.user })
-	) {
-		const article = mongoose.Types.ObjectId(req.body.article).valueOf();
-		const user = mongoose.Types.ObjectId(req.body.user).valueOf();
-		comment.article = article;
-		comment.user = user;
-		comment.body = req.body.body;
-		comment
-			.save()
-			.then((data) => res.status(200).json(data))
-			.catch((error) => res.status(500).json({ message: error }));
-	} else {
-		res.status(500).json({ message: 'Artículo o usuario no existe' });
-	}
+	comment.article = req.boddy.article;
+	comment.user = req.body.user;
+	comment.body = req.body.body;
+	comment
+		.save()
+		.then((data) => res.status(200).json(data))
+		.catch((error) => res.status(500).json({ message: error }));
 };
 
 const editCommentById = (req, res) => {

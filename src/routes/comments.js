@@ -12,7 +12,7 @@ const router = express.Router();
 
 router
 	.get('/', getAllComments)
-	.get('/category/:category', getCommentsByArticle)
+	.get('/article/:article', getCommentsByArticle)
 	.get('/:id', getCommentById)
 	.post('/', createComment)
 	.patch('/:id', editCommentById)
