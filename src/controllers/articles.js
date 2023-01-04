@@ -3,6 +3,7 @@ const articleSchema = require('../models/article');
 const getAllArticles = (req, res) => {
 	articleSchema
 		.find()
+		.sort({ created: -1 })
 		.then((data) => res.status(200).json(data))
 		.catch((error) => res.status(500).json({ message: error }));
 };
