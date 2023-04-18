@@ -12,9 +12,9 @@ POST http://localhost:8080/api/users/signup HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "alex",
-    "email": "alex@email.com",
-    "password": "contraseña"
+    "username": "AlexJoseBC",
+    "email": "alexjosebujosacruz@hotmail.com",
+    "password": "Alex12345678"
 }
 
 ### LOGIN USER
