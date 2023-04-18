@@ -46,7 +46,8 @@ const loginUser = async (req, res) => {
 				{ expiresIn: '3d' }
 			);
 			const username = user.username;
-			res.status(200).json({ username, accessToken });
+			const id = user._id;
+			res.status(200).json({ username, id, accessToken });
 		} else {
 			res.status(500).json({
 				message: 'Usuario o contraseña incorrecta',
@@ -63,7 +64,12 @@ const editUserById = (req, res) => {
 
 	userSchema
 		.updateOne({ _id: id }, { $set: updates })
-		.then((data) => res.status(200).json(data))
+		.then((data) => {
+			if (data.matchedCount === 0) {
+				return res.status(404).json({ message: 'User not found' });
+			}
+			return res.status(200).json(data);
+		})
 		.catch((error) => res.status(500).json({ message: error }));
 };
 
@@ -72,7 +78,12 @@ const deleteUserById = (req, res) => {
 
 	userSchema
 		.deleteOne({ _id: id })
-		.then((data) => res.status(200).json(data))
+		.then((data) => {
+			if (data.deletedCount === 0) {
+				return res.status(404).json({ message: 'User not found' });
+			}
+			return res.status(200).json(data);
+		})
 		.catch((error) => res.status(500).json({ message: error }));
 };
 
