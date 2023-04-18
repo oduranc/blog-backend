@@ -14,7 +14,7 @@ describe('GET /api/comments/:id', () => {
 
   it('get a single comment by ID', async () => {
     await mongoose.connect(process.env.MONGODB_URI)
-    const response = await request(app).get('/api/comments/63b736333d17b759c20a3274');
+    const response = await request(app).get('/api/comments/643e9de01a7b6506fa40e3a4');
     expect(response.status).toEqual(200);
   });
 
@@ -36,10 +36,10 @@ describe('POST /api/comments', () => {
     expect(response.status).toEqual(200);
   });
 
-  it('should return 400 for incomplete data', async () => {
+  it('should return 500 for incomplete data', async () => {
     const incompleteComment = {
-      article: '63b513789070177151f1c2af',
-      user: 'Bujosa2023',
+      article: 'testarticle',
+      user: 'testuser"',
     };
     const response = await request(app)
       .post('/api/comments')
@@ -65,7 +65,7 @@ describe('GET /api/comments/article/:article', () => {
 
   it('should return an article by id', async () => {
     await mongoose.connect(process.env.MONGODB_URI)
-    const response = await request(app).get('/api/comments/article/63b505039070177151f1c265');
+    const response = await request(app).get('/api/comments/article/testarticle');
     expect(response.status).toEqual(200);
   });
 
